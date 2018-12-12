@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.aynu.mapper.userMapper">
+		
+		 <insert id="insertUser" parameterType="cn.aynu.po.userInfo" useGeneratedKeys="false">
+			insert into USERLOGIN (USERNAME,USERPASSWORD) values (#{username},#{userpassword})
+		</insert>
+		
+		<select id="selectUser" parameterType="String" resultType="cn.aynu.po.userInfo">
+			select * from USERLOGIN where username=#{id}
+		</select>
+		<!-- 调用函数 LOGINCHECK -->
+		 <select id="logincheck" parameterType="cn.aynu.po.userInfo" statementType="CALLABLE">
+          {#{state,mode=OUT,jdbcType=NUMERIC}=call LOGINCHECK(#{username,mode=IN,jdbcType=VARCHAR},#{userpassword,mode=IN,jdbcType=VARCHAR})}
+		</select> 
+		<!-- {#{state,mode=OUT,jdbcType=NUMERIC}=call logincheck(#{username,mode=IN,jdbcType=VARCHAR},#{userpassword,mode=IN,jdbcType=VARCHAR})} -->
+			
+		<!-- 调用存储过程 RICHESINCREASE -->
+		<select id="richesincrease" parameterType="cn.aynu.vo.richesaddnumber" statementType="CALLABLE">
+          {call RICHESINCREASE(#{index,mode=IN,jdbcType=NUMERIC},#{name,mode=IN,jdbcType=VARCHAR},#{sum,mode=OUT,jdbcType=NUMERIC})}
+		</select>
+		<!--调用存储过程 LOGLASTTIME  -->
+		<select id="loglasttime" parameterType="String">
+			{call LOGLASTTIME(#{id,mode=IN,jdbcType=VARCHAR})}	
+		</select>
+	
+</mapper>
+
+
+

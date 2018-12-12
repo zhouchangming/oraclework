@@ -6,8 +6,14 @@
 	<artifactId>simpleTemplete</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-
 	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>5.0.0.RELEASE</version>
+		</dependency>
 
 		<!-- spring mvc引用 -->
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
@@ -51,9 +57,15 @@
 		<!-- 引入数据连接池包 -->
 		<!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
 		<dependency>
-		    <groupId>com.alibaba</groupId>
-		    <artifactId>druid</artifactId>
-		    <version>1.1.10</version>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.1.10</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
 		</dependency>
 		<!-- 引入Mysql驱动 -->
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -62,6 +74,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.44</version>
 		</dependency>
+		<!--加入oracle 驱动 -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc7</artifactId>
+			<version>12.1.0.2.0</version>
+		</dependency>
+
 
 		<!-- mybatis逆向工程包（）作用生产对应的bean以及mapper等内容） 即代码生成器 -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
@@ -102,10 +121,9 @@
 			<scope>test</scope>
 		</dependency>
 		<!--log4j -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
+		
+
 	</dependencies>
+
+
 </project>

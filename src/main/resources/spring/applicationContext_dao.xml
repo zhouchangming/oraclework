@@ -16,16 +16,14 @@
 	<!-- 1. 加载配置文件   配置数据源使用-->
 	<context:property-placeholder location="classpath:db.properties"/>
 	
-	
-	<!-- 2.配置数据源  主要是sqlsessionfactory里要使用  设置数据源 -->
-	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driver}"></property>
-		<property name="url" value="${jdbc.url}"></property>
-		<property name="username" value="${jdbc.username}"></property>
-		<property name="password" value="${jdbc.password}"></property>
+	<!-- 2.配置数据源  主要是sqlsessionfactory里要使用  设置数据源   com.alibaba.druid.pool.DruidDataSource -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@47.105.186.147:1521:xe"></property>
+		<property name="username" value="zcmwork"></property>
+		<property name="password" value="aynuzcm"></property>
 		<property name="maxActive" value="10" />
 	</bean>
-	
 	
 	<!-- 3.设置 sqlsessionfactory  主要是 具体的dao方法要用  用于制造sqlsession 
 		使用的是整合包下的 sqlsessionfactory 要传入 数据源 和 Mybatis 的配置文件
@@ -45,8 +43,6 @@
 		<!--之所以直接能用mapper对象  是因为这个整合类里面封装了 sqlsessiontemplate对象  作为中间桥梁生成mapper对象  -->
 	</bean>
 	
-	
-
 </beans>
 
 
